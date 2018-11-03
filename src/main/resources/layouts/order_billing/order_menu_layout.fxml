@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mfd.inventorytracking.orderbill.OrderBillingMenuController">
+
+    <children>
+        <Button mnemonicParsing="false" onAction="#onClickCreateNewBill" text="Create New Bill"/>
+        <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill"/>
+    </children>
+
+
+</VBox>

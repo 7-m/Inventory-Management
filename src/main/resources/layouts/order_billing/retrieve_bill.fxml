@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.orderbill.RetrieveOrderBillController">
+   <children>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="219.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="206.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="75.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Buyer Name" textAlignment="RIGHT" />
+                  <TextField fx:id="BuyerNameText" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="1">
+               <children>
+                  <Label text="Bill No." textAlignment="RIGHT" />
+                  <TextField fx:id="billNoText" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <Separator />
+      <GridPane prefHeight="55.0" prefWidth="500.0" GridPane.rowIndex="1">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Buyer Name" textAlignment="RIGHT" />
+                  <Label fx:id="BuyerNameDisplay" text="Buyer_name" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="1">
+               <children>
+                  <Label text="Bill No." textAlignment="RIGHT" />
+                  <Label fx:id="billNoDisplay" text="bill_no" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="2">
+               <children>
+                  <Label text="Date" textAlignment="RIGHT" />
+                  <Label fx:id="dateDisplay" text="date" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="3">
+               <children>
+                  <Label text="Remarks" textAlignment="RIGHT" />
+                  <Label fx:id="remarksDisplay" text="remarks" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="4">
+               <children>
+                  <Label text="Mode of Payment" textAlignment="RIGHT" />
+                  <Label fx:id="modeOfPayDisplay" text="mode_of_payment" />
+               </children>
+            </VBox>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <TableView fx:id="billItemsTable" prefHeight="200.0" prefWidth="200.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Part" />
+            <TableColumn prefWidth="75.0" text="Quantity" />
+            <TableColumn prefWidth="98.0" text="Price / Unit" />
+         </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

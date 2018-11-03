@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.NewPartController">
+   <children>
+      <VBox>
+         <children>
+            <HBox>
+               <children>
+                  <Label text="Part Name" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Label" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Image Location" />
+                  <Button mnemonicParsing="false" text="Select File" />
+                  <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add Part" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</HBox>

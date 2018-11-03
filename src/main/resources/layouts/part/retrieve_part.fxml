@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
+   <children>
+        <VBox>
+            <children>
+                <HBox>
+                    <children>
+                        <Label text="Part Name" />
+                        <TextField />
+                    </children>
+                </HBox>
+            <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
+            </children>
+        </VBox>
+        <ImageView fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</HBox>
