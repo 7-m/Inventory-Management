@@ -7,48 +7,39 @@
 <?import javafx.scene.layout.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.buyer.NewBuyerController">
-   <children>
-      <GridPane>
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Name" />
-                  <TextField />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-               <children>
-                  <Label text="Gst_No" />
-                  <TextField />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
-               <children>
-                  <Label text="Address" />
-                  <TextField />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
-               <children>
-                  <Label text="Contact_No" />
-                  <TextField />
-               </children>
-            </VBox>
-         </children>
-      </GridPane>
-      <HBox>
-         <children>
-            <Button mnemonicParsing="false" onAction="#onClickAddBuyer" text="Add Buyer" />
-         </children>
-      </HBox>
-   </children>
+    <children>
+        <HBox>
+            <children>
+                <VBox>
+                    <children>
+                        <Label text="Name" />
+                        <TextField fx:id="nameField" />
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Gst_No" />
+                        <TextField fx:id="gstField" />
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="2">
+                    <children>
+                        <Label text="Address" />
+                        <TextField fx:id="addressField" />
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="3">
+                    <children>
+                        <Label text="Contact_No" />
+                        <TextField fx:id="contactField" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickAddBuyer" text="Add Supplier" />
+            </children>
+        </HBox>
+    </children>
 </VBox>

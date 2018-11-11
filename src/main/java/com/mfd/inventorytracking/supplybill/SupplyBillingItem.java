@@ -1,25 +1,22 @@
 package com.mfd.inventorytracking.supplybill;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 class SupplyBillingItem {
-	StringProperty part=new SimpleStringProperty();
-	IntegerProperty quantity=new SimpleIntegerProperty();
-	IntegerProperty pricePerUnit=new SimpleIntegerProperty();
+	StringProperty  part         =new SimpleStringProperty();
+	IntegerProperty quantity     =new SimpleIntegerProperty();
+	FloatProperty   pricePerUnit =new SimpleFloatProperty();
 
-	 StringProperty partProperty() {
-		return part;
-	}
+	  StringProperty partProperty() {
+		 return part;
+	 }
 
-	 IntegerProperty quantityProperty() {
-		return quantity;
-	}
+	  IntegerProperty quantityProperty() {
+		 return quantity;
+	 }
 
-	 IntegerProperty pricePerUnitProperty() {
-		return pricePerUnit;
-	}
+	  FloatProperty pricePerUnitProperty() {
+		 return pricePerUnit;
+	 }
 
-}
+ }

@@ -8,6 +8,7 @@ public class Utils {
 	private Utils() {
 	}
 
+
 	public static class Validate {
 		private Validate() {
 		}

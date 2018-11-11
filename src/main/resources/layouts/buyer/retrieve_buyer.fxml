@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -9,46 +11,17 @@
         <HBox>
             <children>
                 <Label text="Search For :" />
-                <TextField />
-            <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
+                <TextField fx:id="searchField" />
+                <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
             </children>
         </HBox>
-        <Separator prefWidth="200.0" />
-        <GridPane>
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <VBox prefHeight="200.0" prefWidth="100.0">
-                    <children>
-                        <Label text="Buyer Name" />
-                        <Label text="Label" />
-                    </children>
-                </VBox>
-                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-                    <children>
-                        <Label text="Gst No" />
-                        <Label text="Label" />
-                    </children>
-                </VBox>
-                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                    <children>
-                        <Label text="Address" />
-                        <Label text="Label" />
-                    </children>
-                </VBox>
-                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <children>
-                        <Label text="Contact No" />
-                        <Label text="Label" />
-                    </children>
-                </VBox>
-            </children>
-        </GridPane>
+        <TableView fx:id="supplierTableView" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="gstinColumn" prefWidth="75.0" text="Gstin" />
+                <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
+                <TableColumn fx:id="contactColumn" prefWidth="75.0" text="Contact" />
+            </columns>
+        </TableView>
     </children>
 </VBox>

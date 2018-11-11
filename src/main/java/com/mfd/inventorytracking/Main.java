@@ -30,6 +30,7 @@ public class Main
 	public void start(Stage primaryStage) throws Exception {
 		//establish connection
 		connectToDatabse();
+		Context.setConnection(connection);
 		URL resource = getClass().getResource("/layouts/home_layout.fxml");
 		FXMLLoader loader = new FXMLLoader(resource);
 		Scene sc = new Scene(loader.load());
@@ -46,8 +47,10 @@ public class Main
 		//configure the database to connect to using commad line args
 		Map<String, String> params = getParameters().getNamed();
 		connection = DriverManager
-				.getConnection("jdbc:mysql://" + params.get("address") + "/Library", params.get("user"),
+				.getConnection("jdbc:mysql://" + params.get("address") + "/INVENTORY_MANAGEMENT", params.get("user"),
 						params.get("password"));
+
+
 
 	}
 

@@ -6,25 +6,22 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.orderbill.NewOrderBillController">
    <children>
-      <GridPane prefHeight="56.0" prefWidth="500.0" GridPane.rowIndex="1">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <HBox>
          <children>
             <VBox>
                <children>
                   <Label text="Buyer Name" textAlignment="RIGHT" />
-                  <TextField fx:id="BuyerNameText" />
+                  <TextField fx:id="buyerNameText" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label text="Remarks" textAlignment="RIGHT" />
+                  <TextArea fx:id="remarksTextArea" />
                </children>
             </VBox>
             <VBox GridPane.columnIndex="1">
@@ -39,12 +36,6 @@
                   <DatePicker fx:id="dateField" />
                </children>
             </VBox>
-            <VBox GridPane.columnIndex="3">
-               <children>
-                  <Label text="Remarks" textAlignment="RIGHT" />
-                  <TextArea fx:id="remarksTextArea" prefHeight="200.0" prefWidth="200.0" />
-               </children>
-            </VBox>
             <VBox GridPane.columnIndex="4">
                <children>
                   <Label text="Mode of Payment" textAlignment="RIGHT" />
@@ -52,7 +43,7 @@
                </children>
             </VBox>
          </children>
-      </GridPane>
+      </HBox>
       <TableView fx:id="billItemsTable">
         <columns>
           <TableColumn minWidth="-1.0" prefWidth="50.0" text="Part" />
