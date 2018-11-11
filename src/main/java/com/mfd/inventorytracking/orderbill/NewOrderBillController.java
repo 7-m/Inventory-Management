@@ -10,6 +10,7 @@ import javafx.util.converter.NumberStringConverter;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import static com.mfd.inventorytracking.Utils.Validate.isFieldEmpty;
@@ -18,12 +19,13 @@ public class NewOrderBillController
 		implements Initializable {
 
 	private Connection                  connection;
+	private OrderBill                   orderBill = new OrderBill();
 	@FXML
 	private TableView<OrderBillingItem> billItemsTable;
 	@FXML
 	private ChoiceBox<PaymentMode>      paymentChoiceBox;
 	@FXML
-	private TextField                   supplierNameText;
+	private TextField                   buyerNameText;
 	@FXML
 	private TextField                   billNoText;
 	@FXML
@@ -43,8 +45,6 @@ public class NewOrderBillController
 		initBillingTable();
 		initChoiceBox();
 
-		remarksTextArea.setEditable(false);
-
 	}
 
 	private void initChoiceBox() {
@@ -54,12 +54,14 @@ public class NewOrderBillController
 	private void initBillingTable() {
 
 		billItemsTable.setEditable(true);
-		billItemsTable.setItems(FXCollections.observableArrayList());
+		billItemsTable.setItems(orderBill.getBilledItems());
 
 
 		// retrieve columns
-		TableColumn<OrderBillingItem, String> names = (TableColumn<OrderBillingItem, String>) billItemsTable.getColumns().get(0);
-		TableColumn<OrderBillingItem, Number> qty = (TableColumn<OrderBillingItem, Number>) billItemsTable.getColumns().get(1);
+		TableColumn<OrderBillingItem, String> names =
+				(TableColumn<OrderBillingItem, String>) billItemsTable.getColumns().get(0);
+		TableColumn<OrderBillingItem, Number> qty =
+				(TableColumn<OrderBillingItem, Number>) billItemsTable.getColumns().get(1);
 		TableColumn<OrderBillingItem, Number> unitprice =
 				(TableColumn<OrderBillingItem, Number>) billItemsTable.getColumns().get(2);
 
@@ -78,7 +80,7 @@ public class NewOrderBillController
 		qty.setOnEditCommit(event -> event.getRowValue().quantity.set(event.getNewValue().intValue()));
 
 		unitprice.setCellFactory(TextFieldTableCell.forTableColumn(new NumberStringConverter()));
-		unitprice.setOnEditCommit(event -> event.getRowValue().pricePerUnit.set(event.getNewValue().intValue()));
+		unitprice.setOnEditCommit(event -> event.getRowValue().pricePerUnit.set(event.getNewValue().floatValue()));
 	}
 
 	@FXML
@@ -94,12 +96,17 @@ public class NewOrderBillController
 	@FXML
 	private void onClickCreateBill(ActionEvent actionEvent) {
 		// code to validate input and create record in the db
-		if (isFieldEmpty(supplierNameText, billNoText, remarksTextArea) ||
+		if (isFieldEmpty(buyerNameText, billNoText, remarksTextArea) ||
 				isFieldEmpty(dateField) || isFieldEmpty(paymentChoiceBox))
 			return;
 
-		//do some validation checks
-		//update database here
+		orderBill.setBillno(Integer.valueOf(billNoText.getText()));
+		orderBill.setBuyerName(buyerNameText.getText());
+		orderBill.setDate(Date.valueOf(dateField.getValue().toString()));
+		orderBill.setPaymentMode(paymentChoiceBox.getValue());
+		orderBill.setRemarks(remarksTextArea.getText());
+
+		Queries.insertBill(orderBill);
 
 
 	}

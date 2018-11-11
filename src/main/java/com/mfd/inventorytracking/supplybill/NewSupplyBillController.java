@@ -9,7 +9,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.NumberStringConverter;
 
 import java.net.URL;
-import java.sql.Connection;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import static com.mfd.inventorytracking.Utils.Validate.isFieldEmpty;
@@ -17,7 +17,8 @@ import static com.mfd.inventorytracking.Utils.Validate.isFieldEmpty;
 public class NewSupplyBillController
 		implements Initializable {
 
-	private Connection                   connection;
+
+	private SupplyBill                   supplyBill = new SupplyBill();
 	@FXML
 	private TableView<SupplyBillingItem> billItemsTable;
 	@FXML
@@ -32,18 +33,11 @@ public class NewSupplyBillController
 	private TextArea                     remarksTextArea;
 
 
-	public void setDatabseConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// init billItemsTable
 		initBillingTable();
 		initChoiceBox();
-
-		remarksTextArea.setEditable(false);
 
 	}
 
@@ -54,12 +48,14 @@ public class NewSupplyBillController
 	private void initBillingTable() {
 
 		billItemsTable.setEditable(true);
-		billItemsTable.setItems(FXCollections.observableArrayList());
+		billItemsTable.setItems(supplyBill.getBilledItems());
 
 
 		// retrieve columns
-		TableColumn<SupplyBillingItem, String> names = (TableColumn<SupplyBillingItem, String>) billItemsTable.getColumns().get(0);
-		TableColumn<SupplyBillingItem, Number> qty = (TableColumn<SupplyBillingItem, Number>) billItemsTable.getColumns().get(1);
+		TableColumn<SupplyBillingItem, String> names =
+				(TableColumn<SupplyBillingItem, String>) billItemsTable.getColumns().get(0);
+		TableColumn<SupplyBillingItem, Number> qty =
+				(TableColumn<SupplyBillingItem, Number>) billItemsTable.getColumns().get(1);
 		TableColumn<SupplyBillingItem, Number> unitprice =
 				(TableColumn<SupplyBillingItem, Number>) billItemsTable.getColumns().get(2);
 
@@ -98,8 +94,13 @@ public class NewSupplyBillController
 				isFieldEmpty(dateField) || isFieldEmpty(paymentChoiceBox))
 			return;
 
-		//do some validation checks
-		//update database here
+		supplyBill.setBillno(Integer.valueOf(billNoText.getText()));
+		supplyBill.setSupplierName(supplierNameText.getText());
+		supplyBill.setDate(Date.valueOf(dateField.getValue().toString()));
+		supplyBill.setPaymentMode(paymentChoiceBox.getValue());
+		supplyBill.setRemarks(remarksTextArea.getText());
+
+		Queries.insertBill(supplyBill);
 
 
 	}

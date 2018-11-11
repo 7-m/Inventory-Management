@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<HBox xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
-   <children>
-        <VBox>
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
+    <items>
+        <AnchorPane>
             <children>
-                <HBox>
+                <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label text="Part Name" />
-                        <TextField />
+                        <HBox>
+                            <children>
+                                <Label text="Part Name" />
+                                <TextField fx:id="partNameField" />
+                            </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
+                        <TableView fx:id="partsTable">
+                            <columns>
+                                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                                <TableColumn fx:id="taxColumn" prefWidth="75.0" text="Tax Slab" />
+                                <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />
+                                <TableColumn fx:id="descColumn" prefWidth="75.0" text="Description" />
+                            </columns>
+                        </TableView>
                     </children>
-                </HBox>
-            <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
+                </VBox>
             </children>
-        </VBox>
-        <ImageView fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
-   </children>
-</HBox>
+        </AnchorPane>
+        <AnchorPane>
+           <children>
+               <ImageView fitHeight="196.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" />
+           </children>
+        </AnchorPane>
+    </items>
+</SplitPane>

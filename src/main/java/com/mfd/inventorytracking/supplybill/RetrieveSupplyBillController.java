@@ -2,53 +2,66 @@ package com.mfd.inventorytracking.supplybill;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import java.sql.Connection;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static com.mfd.inventorytracking.Utils.Validate.isFieldEmpty;
 
 
-public class RetrieveSupplyBillController {
-	@FXML
-	private TextField supplierNameText;
-	@FXML
-	private TextField billNoText;
-	@FXML
-	private Label     billNoDisplay;
-	@FXML
-	private Label     dateDisplay;
-	@FXML
-	private Label     remarksDisplay;
-	@FXML
-	private Label     modeOfPayDisplay;
-	@FXML
-	private TableView billItemsTable;
-	@FXML
-	private Label     supplierNameDisplay;
+public class RetrieveSupplyBillController
+		implements Initializable {
 
-	private Connection connection;
+	@FXML private TextField billNoText;
+	@FXML private Label     billNoDisplay;
+	@FXML private Label     dateDisplay;
+	@FXML private Label     remarksDisplay;
+	@FXML private Label     modeOfPayDisplay;
 
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
+	@FXML private Label supplierNameDisplay;
+
+
+	@FXML private TableColumn<SupplyBillingItem, String> partColumn;
+	@FXML private TableColumn<SupplyBillingItem, Number> quantityColumn;
+	@FXML private TableColumn<SupplyBillingItem, Number> priceColumn;
+
+
+	@FXML private TableView<SupplyBillingItem> billItemsTable;
+	@FXML private TextField                    supplierNameText;
 
 
 	@FXML
 	private void onClickRetrieveBill(ActionEvent actionEvent) {
 		//look up bill with given supp id and bill no
-		if (isFieldEmpty(supplierNameText,billNoText))
+		if (isFieldEmpty(supplierNameText, billNoText))
 			return;
 
-		//to make things neat wrap the results section in an anchor pane and make it visible only when a valid
-		// result is retrived
-		//fetch bill, display appropriate message if found or not found
+		SupplyBill bill = Queries.retrieve(supplierNameText.getText(), Integer.parseInt(billNoText.getText()));
+		if (bill == null)
+			return;
+
+		billNoDisplay.setText(String.valueOf(bill.getBillno()));
+		remarksDisplay.setText(bill.getRemarks());
+		modeOfPayDisplay.setText(bill.getPaymentMode().toString());
+		dateDisplay.setText(bill.getDate().toString());
+		supplierNameDisplay.setText(bill.getSupplierName());
+
+
+		billItemsTable.setItems(bill.getBilledItems());
 
 	}
 
-	@FXML
-	private void onClickSearch(ActionEvent actionEvent) {
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		partColumn.setCellValueFactory(param -> param.getValue().part);
+		quantityColumn.setCellValueFactory(param -> param.getValue().quantity);
+		priceColumn.setCellValueFactory(param -> param.getValue().pricePerUnit);
+
 	}
 }

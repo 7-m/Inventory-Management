@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.NewPartController">
-   <children>
-      <VBox>
-         <children>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.NewPartController">
+    <children>
+        <VBox>
+            <children>
+                <HBox>
+                    <children>
+                        <Label text="Part Name" />
+                        <TextField fx:id="nameField" />
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Label text="Tax Slab" />
+                        <TextField fx:id="taxField" />
+                    </children>
+                </HBox>
             <HBox>
                <children>
-                  <Label text="Part Name" />
-                  <TextField />
+                  <Label text="Quantity" />
+                  <TextField fx:id="quantityField" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="Label" />
-                  <TextField />
+                  <Label text="Description" />
+                  <TextArea fx:id="descField" />
                </children>
             </HBox>
-            <HBox>
-               <children>
-                  <Label text="Image Location" />
-                  <Button mnemonicParsing="false" text="Select File" />
-                  <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add Part" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <ImageView fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
-   </children>
+                <HBox>
+                    <children>
+                        <Label text="Image Location" />
+                        <Button mnemonicParsing="false" onAction="#onClickSelectImageFile" text="Select File" />
+                        <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add Part" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <ImageView fx:id="imageView" fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
 </HBox>

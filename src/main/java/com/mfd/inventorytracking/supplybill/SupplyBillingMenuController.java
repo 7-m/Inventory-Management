@@ -10,12 +10,12 @@ public class SupplyBillingMenuController
 
 	@FXML
 	private void onClickCreateNewBill(ActionEvent actionEvent) {
-		setView("/layouts/order_billing/new_bill.fxml");
+		setView("/layouts/supply_billing/new_bill.fxml");
 	}
 
 	@FXML
 	private void onClickRetrieveBill(ActionEvent actionEvent) {
-		setView("/layouts/order_billing/retrieve_bill.fxml");
+		setView("/layouts/supply_billing/retrieve_bill.fxml");
 	}
 
 

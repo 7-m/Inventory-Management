@@ -8,43 +8,34 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.supplier.NewSupplierController">
    <children>
-      <GridPane>
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <HBox>
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox>
                <children>
                   <Label text="Name" />
-                  <TextField />
+                  <TextField fx:id="nameField" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <VBox GridPane.columnIndex="1">
                <children>
                   <Label text="Gst_No" />
-                  <TextField />
+                  <TextField fx:id="gstField" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <VBox GridPane.columnIndex="2">
                <children>
                   <Label text="Address" />
-                  <TextField />
+                  <TextField fx:id="addressField" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <VBox GridPane.columnIndex="3">
                <children>
                   <Label text="Contact_No" />
-                  <TextField />
+                  <TextField fx:id="contactField" />
                </children>
             </VBox>
          </children>
-      </GridPane>
+      </HBox>
       <HBox>
          <children>
             <Button mnemonicParsing="false" onAction="#onClickAddSupplier" text="Add Supplier" />
