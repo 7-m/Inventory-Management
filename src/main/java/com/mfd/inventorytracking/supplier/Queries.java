@@ -10,7 +10,7 @@ import java.sql.SQLException;
 class Queries {
 	static void insertSupplier(Supplier supplier) {
 		Connection conn = Context.getConnection();
-		try (PreparedStatement insertSupplier = conn.prepareStatement("INSERT INTO SUPPLIER VALUES(?, ?, ?, ?, DEFAULT)");) {
+		try (PreparedStatement insertSupplier = conn.prepareStatement("INSERT INTO SUPPLIER VALUES(?, ?, ?, ?)");) {
 			insertSupplier.setString(1, supplier.getName());
 			insertSupplier.setString(2, supplier.getGstin());
 			insertSupplier.setString(3, supplier.getAddress());
@@ -37,7 +37,6 @@ class Queries {
 				s.setGstin(r.getString(2));
 				s.setAddress(r.getString(3));
 				s.setContact(r.getString(4));
-				s.setOutAmt(r.getInt(5));
 			}
 
 		} catch (SQLException e) {

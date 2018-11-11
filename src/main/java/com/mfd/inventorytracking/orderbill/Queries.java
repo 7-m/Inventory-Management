@@ -17,6 +17,10 @@ public class Queries {
 				"INSERT INTO ORDER_BILL VALUES(?, ?, ?, ?, ?);");
 			 PreparedStatement orderBillingQuery = conn
 					 .prepareStatement("INSERT INTO ORDER_BILLING VALUES(?, ?, ?, ?);")) {
+
+			//to prevent incomplete entries in ORDER_BILL and ORDER_BILLING if any query fails
+			conn.setAutoCommit(false);
+
 			orderBillQuery.setInt(1, orderBill.getBillno());
 			orderBillQuery.setString(2, orderBill.getBuyerName());
 			orderBillQuery.setDate(3, orderBill.getDate());
@@ -35,13 +39,26 @@ public class Queries {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			Context.displayErrorWindow(e.getMessage());
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 
+		}finally {
+			try {
+				conn.commit();
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	public static OrderBill retrieve(int billNo) {
 		OrderBill bill = new OrderBill();
 		Connection conn = Context.getConnection();
+
 		//bill no. is sufficient in billing_order to retrieve all details
 		try (PreparedStatement billQuery = conn.prepareStatement("SELECT * FROM ORDER_BILL WHERE Bill_No=? ;");
 			 PreparedStatement billItemsQuery = conn.prepareStatement("SELECT * FROM ORDER_BILLING WHERE Bill_No=?;")) {

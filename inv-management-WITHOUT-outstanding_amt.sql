@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.13, for Linux (x86_64)
 --
--- Host: localhost    Database: INVMGMT
+-- Host: localhost    Database: INVENTORY_MANAGEMENT
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
@@ -27,7 +27,6 @@ CREATE TABLE `BUYER` (
   `Gstin` varchar(15) NOT NULL,
   `Address` varchar(200) NOT NULL,
   `Contact_No` varchar(45) NOT NULL,
-  `Outstanding_Amount` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Name`),
   UNIQUE KEY `Gst_No_UNIQUE` (`Gstin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -69,25 +68,6 @@ CREATE TABLE `ORDER_BILL` (
   CONSTRAINT `order_bill_buyer_name` FOREIGN KEY (`Buyer_Name`) REFERENCES `BUYER` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `ORDER_BILL_UPDATE_OUTSTANDING_ON_PAYMENT` AFTER UPDATE ON `ORDER_BILL` FOR EACH ROW BEGIN
-	if old.Mode_Of_Payment = 'UNPD' AND  new.Mode_Of_Payment <> 'UNPD' then
-		update BUYER set Outstanding_Amount = Outstanding_Amount -ORDER_BILLING_ITEM_SUMMER(new.Bill_No);
-	end if;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `ORDER_BILLING`
@@ -146,25 +126,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`mfd`@`localhost`*/ /*!50003 TRIGGER `ORDER_BILLING_UPDATE_OUTSTANDING` AFTER INSERT ON `ORDER_BILLING` FOR EACH ROW BEGIN  
- if (select Mode_Of_Payment from ORDER_BILL ob WHERE New.Bill_No=ob.Bill_No) = 'UNPD' then 
- update  BUYER b set Outstanding_Amount= (Outstanding_Amount + New.Price_Pc * New.Quantity)
- WHERE b.Name= (SELECT ob.Buyer_Name FROM ORDER_BILL ob WHERE ob.Bill_No=new.Bill_No); 
- end if;   END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `PART`
@@ -195,7 +156,6 @@ CREATE TABLE `SUPPLIER` (
   `Gstin` varchar(15) DEFAULT NULL,
   `Address` varchar(200) NOT NULL,
   `Contact_No` varchar(10) NOT NULL,
-  `Outstanding_Amount` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Name`),
   UNIQUE KEY `Gst_No_UNIQUE` (`Gstin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -236,25 +196,6 @@ CREATE TABLE `SUPPLY_BILL` (
   CONSTRAINT `supply_bill_supplier_name_fk` FOREIGN KEY (`Supplier_Name`) REFERENCES `SUPPLIER` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `SUPPLY_BILL_AFTER_UPDATE` AFTER UPDATE ON `SUPPLY_BILL` FOR EACH ROW BEGIN
-if old.Mode_Of_Payment = 'UNPD' AND  new.Mode_Of_Payment <> 'UNPD' then
-		update SUPPLIER set Outstanding_Amount = Outstanding_Amount -SUPPLY_BILLING_ITEM_SUMMER(new.Bill_No, new.Supplier_Name);
-	end if;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `SUPPLY_BILLING`
@@ -305,21 +246,6 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`mfd`@`localhost`*/ /*!50003 TRIGGER `SUPPLY_BILLING_ON_SUPPLY_UPDATE_SUPPLIES_TABLE` AFTER INSERT ON `SUPPLY_BILLING` FOR EACH ROW if not exists(select * from SUPPLIES s where s.Part_Name=new.Part_Name AND s.Supplier_Name = new.Supplier_Name) then
     insert into SUPPLIES values(New.Supplier_Name, New.Part_Name);
     end if */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`mfd`@`localhost`*/ /*!50003 TRIGGER `SUPPLY_BILLING_UPDATE_OUTSTANDING` AFTER INSERT ON `SUPPLY_BILLING` FOR EACH ROW BEGIN   if (select Mode_Of_Payment from SUPPLY_BILL ob WHERE New.Supplier_Name=ob.Supplier_Name AND New.Bill_No=ob.Bill_No) = 'UNPD' then   update  SUPPLIER s set Outstanding_Amount= (Outstanding_Amount + New.Price_Pc * New.Quantity) WHERE New.Supplier_Name=s.Name;  end if;  END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -391,4 +317,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-11 18:15:05
+-- Dump completed on 2018-11-11 18:55:42

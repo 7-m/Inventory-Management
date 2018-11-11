@@ -21,7 +21,6 @@
                 <TableColumn fx:id="gstinColumn" prefWidth="75.0" text="Gstin" />
                 <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
                 <TableColumn fx:id="contactColumn" prefWidth="75.0" text="Contact" />
-            <TableColumn fx:id="outAmtColumn" prefWidth="75.0" text="Outstanding Amount" />
             </columns>
         </TableView>
     </children>

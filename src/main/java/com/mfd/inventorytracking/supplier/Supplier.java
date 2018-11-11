@@ -5,15 +5,6 @@ package com.mfd.inventorytracking.supplier;
 	private String gstin;
 	private String address;
 	private String contact;
-	private Integer outAmt;
-
-	 Integer getOutAmt() {
-		 return outAmt;
-	 }
-
-	 void setOutAmt(Integer outAmt) {
-		 this.outAmt = outAmt;
-	 }
 
 	 public Supplier() {
 

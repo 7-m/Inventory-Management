@@ -24,7 +24,7 @@ public class RetrieveBuyerController
 	@FXML private TableColumn<Buyer, String> contactColumn;
 	@FXML private TextField                  searchField;
 	private       ObservableList<Buyer>      buyers = FXCollections.observableArrayList();
-	@FXML private TableColumn<Buyer,Number> outAmtColumn;
+
 
 	@FXML
 	private void onClickSearch(ActionEvent actionEvent) {
@@ -49,6 +49,5 @@ public class RetrieveBuyerController
 		gstinColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getGstin()));
 		addressColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getAddress()));
 		contactColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getContact()));
-		outAmtColumn.setCellValueFactory(param -> new ReadOnlyIntegerWrapper(param.getValue().getOutAmt()));
 	}
 }

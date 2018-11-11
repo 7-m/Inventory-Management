@@ -5,7 +5,6 @@ class Buyer {
 	private String  gstin;
 	private String  address;
 	private String  contact;
-	private Integer outAmt;
 
 	public Buyer() {
 
@@ -16,14 +15,6 @@ class Buyer {
 		this.gstin = gstin;
 		this.address = address;
 		this.contact = contact;
-	}
-
-	Integer getOutAmt() {
-		return outAmt;
-	}
-
-	void setOutAmt(Integer outAmt) {
-		this.outAmt = outAmt;
 	}
 
 	public String getName() {

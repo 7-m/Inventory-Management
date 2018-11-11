@@ -90,7 +90,7 @@ public class NewSupplyBillController
 	@FXML
 	private void onClickCreateBill(ActionEvent actionEvent) {
 		// code to validate input and create record in the db
-		if (isFieldEmpty(supplierNameText, billNoText, remarksTextArea) ||
+		if (isFieldEmpty(supplierNameText, billNoText) ||
 				isFieldEmpty(dateField) || isFieldEmpty(paymentChoiceBox))
 			return;
 

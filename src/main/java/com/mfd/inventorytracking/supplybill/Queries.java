@@ -17,6 +17,10 @@ public class Queries {
 				"INSERT INTO SUPPLY_BILL VALUES(?, ?, ?, ?, ?);");
 			 PreparedStatement orderBillingQuery = conn
 					 .prepareStatement("INSERT INTO SUPPLY_BILLING VALUES(?, ?, ?, ?, ?);")) {
+
+			//to prevent incomplete entries in SUPPLY_BILL  and SUPPLY_BILLING
+			conn.setAutoCommit(false);
+
 			orderBillQuery.setInt(1, supplyBill.getBillno());
 			orderBillQuery.setString(2, supplyBill.getSupplierName());
 			orderBillQuery.setDate(3, supplyBill.getDate());
@@ -34,9 +38,21 @@ public class Queries {
 				orderBillingQuery.execute();
 			}
 		} catch (SQLException e) {
+
 			e.printStackTrace();
 			Context.displayErrorWindow(e.getMessage());
-
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			try {
+				conn.commit();
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
