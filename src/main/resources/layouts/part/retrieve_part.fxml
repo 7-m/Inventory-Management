@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/layouts/container.css"
+           dividerPositions="0.5108153078202995" xmlns="http://javafx.com/javafx/8"
+           fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
     <items>
         <AnchorPane>
             <children>
@@ -16,9 +15,9 @@
                             <children>
                                 <Label text="Part Name" />
                                 <TextField fx:id="partNameField" />
+                                <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search"/>
                             </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
                         <TableView fx:id="partsTable">
                             <columns>
                                 <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />

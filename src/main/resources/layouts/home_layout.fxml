@@ -2,38 +2,38 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.mfd.inventorytracking.HomeLayoutController">
+           fx:controller="com.mfd.inventorytracking.HomeLayoutController"
+           stylesheets="/layouts/bootstrap_theme.css"
+>
     <items>
         <Accordion>
             <panes>
-                <TitledPane animated="false" text="Supply Bills">
+                <TitledPane text="Supply Bills">
                     <content>
                         <fx:include source="supply_billing/supply_menu_layout.fxml" fx:id="supplyBillingMenu"/>
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Suppliers">
+                <TitledPane text="Suppliers">
                     <content>
                         <fx:include source="supplier/supplier_menu_layout.fxml" fx:id="supplierMenu"/>
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Buyers">
+                <TitledPane text="Buyers">
                     <content>
-                        <VBox>
-                            <children>
-                                <fx:include source="buyer/buyer_menu_layout.fxml" fx:id="buyerMenu"/>
-                            </children>
-                        </VBox>
+
+
+                        <fx:include source="buyer/buyer_menu_layout.fxml" fx:id="buyerMenu"/>
+
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Parts">
+                <TitledPane text="Parts">
                     <content>
                         <fx:include source="part/part_menu_layout.fxml" fx:id="partMenu"/>
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Order Bills">
+                <TitledPane text="Order Bills">
                     <content>
                         <fx:include source="order_billing/order_menu_layout.fxml" fx:id="orderBillingMenu"/>
                     </content>

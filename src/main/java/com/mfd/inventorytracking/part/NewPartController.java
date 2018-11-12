@@ -47,7 +47,7 @@ public class NewPartController {
 		partImage = chooser.showOpenDialog(null);
 
 
-		if (imageView != null) {
+		if (partImage != null) {
 			try (FileInputStream fis = new FileInputStream(partImage)) {
 				imageView.setImage(new Image(fis));
 			} catch (IOException e) {

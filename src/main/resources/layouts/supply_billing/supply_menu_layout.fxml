@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.mfd.inventorytracking.supplybill.SupplyBillingMenuController">
+      fx:controller="com.mfd.inventorytracking.supplybill.SupplyBillingMenuController"
+      stylesheets="/layouts/menu.css">
 
     <children>
         <Button mnemonicParsing="false" onAction="#onClickCreateNewBill" text="Create New Bill"/>
