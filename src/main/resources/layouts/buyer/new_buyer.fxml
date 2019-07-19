@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.buyer.NewBuyerController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171"
+      fx:controller="com.mfd.inventorytracking.buyer.NewBuyerController">
     <children>
-        <HBox>
+        <VBox>
             <children>
-                <VBox>
-                    <children>
-                        <Label text="Name" />
-                        <TextField fx:id="nameField" />
-                    </children>
-                </VBox>
-                <VBox GridPane.columnIndex="1">
-                    <children>
-                        <Label text="Gst_No" />
-                        <TextField fx:id="gstField" />
-                    </children>
-                </VBox>
-                <VBox GridPane.columnIndex="2">
-                    <children>
-                        <Label text="Address" />
-                        <TextField fx:id="addressField" />
-                    </children>
-                </VBox>
-                <VBox GridPane.columnIndex="3">
-                    <children>
-                        <Label text="Contact_No" />
-                        <TextField fx:id="contactField" />
-                    </children>
-                </VBox>
+                <Label text="Name"/>
+                <TextField fx:id="nameField"/>
             </children>
-        </HBox>
-        <HBox>
+        </VBox>
+        <VBox GridPane.columnIndex="3">
             <children>
-                <Button mnemonicParsing="false" onAction="#onClickAddBuyer" text="Add Supplier" />
+                <Label text="Contact No"/>
+                <TextField fx:id="contactField"/>
             </children>
-        </HBox>
+        </VBox>
+        <VBox GridPane.columnIndex="1">
+            <children>
+                <Label text="Gst No"/>
+                <TextField fx:id="gstField"/>
+            </children>
+        </VBox>
+        <VBox GridPane.columnIndex="2">
+            <children>
+                <Label text="Address"/>
+                <TextField fx:id="addressField"/>
+            </children>
+        </VBox>
+        <Button mnemonicParsing="false" onAction="#onClickAddBuyer" text="Add Supplier"/>
     </children>
 </VBox>

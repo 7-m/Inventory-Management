@@ -20,7 +20,7 @@ public class NewBuyerController {
 			return;
 
 		Buyer supplier =
-				new Buyer(nameField.getText(), gstField.getText(), addressField.getText(), contactField.getText());
+				new Buyer(nameField.getText(), gstField.getText(), addressField.getText(), contactField.getText(),0);
 		Queries.insertBuyer(supplier);
 	}
 }

@@ -18,4 +18,9 @@ public class BuyerMenuController
 	private void onClickRetrieveBuyer(ActionEvent actionEvent) {
 		setView("/layouts/buyer/retrieve_buyer.fxml");
 	}
+
+	@FXML
+	private void onClickRetrieveAllBuyer(ActionEvent actionEvent) {
+		setView("/layouts/buyer/retrieve_all_buyer.fxml");
+	}
 }

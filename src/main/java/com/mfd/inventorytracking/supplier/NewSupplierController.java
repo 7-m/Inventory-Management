@@ -17,7 +17,7 @@ public class NewSupplierController {
 			return;
 
 		Supplier supplier =
-				new Supplier(nameField.getText(), gstField.getText(), addressField.getText(), contactField.getText());
+				new Supplier(nameField.getText(), gstField.getText(), addressField.getText(), contactField.getText(),0);
 		Queries.insertSupplier(
 				supplier);
 	}

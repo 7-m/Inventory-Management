@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" stylesheets="/layouts/container.css" xmlns="http://javafx.com/javafx/8.0.171"
+      fx:controller="com.mfd.inventorytracking.part.NewPartController">
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.NewPartController">
+
     <children>
         <VBox>
             <children>
-                <HBox>
+                <VBox>
                     <children>
                         <Label text="Part Name" />
                         <TextField fx:id="nameField" />
                     </children>
-                </HBox>
-                <HBox>
+                </VBox>
+                <VBox>
                     <children>
                         <Label text="Tax Slab" />
                         <TextField fx:id="taxField" />
                     </children>
-                </HBox>
-            <HBox>
-               <children>
-                  <Label text="Quantity" />
-                  <TextField fx:id="quantityField" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label text="Description" />
-                  <TextArea fx:id="descField" />
-               </children>
-            </HBox>
+                </VBox>
+                <VBox>
+                    <children>
+                        <Label text="Quantity"/>
+                        <TextField fx:id="quantityField"/>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <Label text="Description"/>
+                        <TextArea fx:id="descField" prefHeight="100.0" prefWidth="300.0"/>
+                    </children>
+                </VBox>
                 <HBox>
                     <children>
                         <Label text="Image Location" />
                         <Button mnemonicParsing="false" onAction="#onClickSelectImageFile" text="Select File" />
-                        <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add Part" />
                     </children>
                 </HBox>
+                <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add Part"/>
             </children>
         </VBox>
         <ImageView fx:id="imageView" fitHeight="196.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />

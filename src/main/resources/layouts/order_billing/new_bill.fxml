@@ -1,66 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
-
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.orderbill.NewOrderBillController">
-   <children>
-      <HBox>
-         <children>
-            <VBox>
-               <children>
-                  <Label text="Buyer Name" textAlignment="RIGHT" />
-                  <TextField fx:id="buyerNameText" />
-               </children>
-            </VBox>
-            <VBox>
-               <children>
-                  <Label text="Remarks" textAlignment="RIGHT" />
-                  <TextArea fx:id="remarksTextArea" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="1">
-               <children>
-                  <Label text="Bill No." textAlignment="RIGHT" />
-                  <TextField fx:id="billNoText" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="2">
-               <children>
-                  <Label text="Date" textAlignment="RIGHT" />
-                  <DatePicker fx:id="dateField" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="4">
-               <children>
-                  <Label text="Mode of Payment" textAlignment="RIGHT" />
-                  <ChoiceBox fx:id="paymentChoiceBox" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <TableView fx:id="billItemsTable">
-        <columns>
-          <TableColumn minWidth="-1.0" prefWidth="50.0" text="Part" />
-          <TableColumn maxWidth="98.0" minWidth="-1.0" prefWidth="98.0" text="Quantity" />
-            <TableColumn minWidth="0.0" prefWidth="89.0" text="Price / Unit" />
-        </columns>
-      </TableView>
-      <HBox>
-         <children>
-            <Button mnemonicParsing="false" onAction="#onClickAddItem" text="Add Item" />
-            <Button mnemonicParsing="false" onAction="#onClickDeleteItem" text="Delete Item" />
-         </children>
-      </HBox>
-      <HBox alignment="TOP_RIGHT" prefWidth="500.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#onClickCreateBill" text="Create Bill" />
-         </children>
-      </HBox>
-   </children>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8"
+      fx:controller="com.mfd.inventorytracking.orderbill.NewOrderBillController" stylesheets="/layouts/container.css">
+    <children>
+        <HBox>
+            <children>
+                <VBox>
+                    <children>
+                        <Label text="Buyer Name" textAlignment="RIGHT"/>
+                        <TextField fx:id="buyerNameText"/>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <Label text="Remarks" textAlignment="RIGHT"/>
+                        <TextArea fx:id="remarksTextArea" prefHeight="100.0" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Bill No." textAlignment="RIGHT"/>
+                        <TextField fx:id="billNoText"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="2">
+                    <children>
+                        <Label text="Date" textAlignment="RIGHT"/>
+                        <DatePicker fx:id="dateField"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="4">
+                    <children>
+                        <Label text="Mode of Payment" textAlignment="RIGHT"/>
+                        <ChoiceBox fx:id="paymentChoiceBox"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <TableView fx:id="billItemsTable">
+            <columns>
+                <TableColumn minWidth="-1.0" prefWidth="409.0" text="Part"/>
+                <TableColumn maxWidth="232.0" minWidth="-1.0" prefWidth="77.0" text="Quantity"/>
+                <TableColumn minWidth="0.0" prefWidth="147.0" text="Price / Unit"/>
+            </columns>
+        </TableView>
+        <HBox>
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickAddItem" text="Add Item"/>
+                <Button mnemonicParsing="false" onAction="#onClickDeleteItem" text="Delete Item"/>
+            </children>
+        </HBox>
+        <HBox alignment="TOP_RIGHT" prefWidth="500.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickCreateBill" text="Create Bill"/>
+            </children>
+        </HBox>
+    </children>
 </VBox>

@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.orderbill.RetrieveOrderBillController">
-   <children>
-      <VBox GridPane.columnIndex="1">
-         <children>
-            <Label text="Bill No." textAlignment="RIGHT" />
-            <TextField fx:id="billNoText" />
-         </children>
-      </VBox>
-      <Separator />
-      <GridPane prefHeight="55.0" prefWidth="500.0" GridPane.rowIndex="1">
-         <children>
-            <VBox>
-               <children>
-                  <Label text="Buyer Name" textAlignment="RIGHT" />
-                  <Label fx:id="buyerNameDisplay" text="Buyer_name" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="1">
-               <children>
-                  <Label text="Bill No." textAlignment="RIGHT" />
-                  <Label fx:id="billNoDisplay" text="bill_no" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="2">
-               <children>
-                  <Label text="Date" textAlignment="RIGHT" />
-                  <Label fx:id="dateDisplay" text="date" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="3">
-               <children>
-                  <Label text="Remarks" textAlignment="RIGHT" />
-                  <Label fx:id="remarksDisplay" text="remarks" />
-               </children>
-            </VBox>
-            <VBox GridPane.columnIndex="4">
-               <children>
-                  <Label text="Mode of Payment" textAlignment="RIGHT" />
-                  <Label fx:id="modeOfPayDisplay" text="mode_of_payment" />
-               </children>
-            </VBox>
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <TableView fx:id="billItemsTable" prefHeight="200.0" prefWidth="200.0">
-         <columns>
-            <TableColumn fx:id="partColumn" prefWidth="75.0" text="Part" />
-            <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />
-            <TableColumn fx:id="priceColumn" prefWidth="98.0" text="Price / Unit" />
-         </columns>
-      </TableView>
-      <HBox alignment="TOP_RIGHT">
-         <children>
-            <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill" />
-         </children>
-      </HBox>
-   </children>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8"
+      fx:controller="com.mfd.inventorytracking.orderbill.RetrieveOrderBillController"
+      stylesheets="/layouts/container.css">
+    <children>
+        <HBox>
+            <children>
+                <Label text="Bill No." textAlignment="RIGHT"/>
+                <TextField fx:id="billNoText"/>
+            </children>
+        </HBox>
+        <Separator/>
+        <GridPane prefHeight="55.0" prefWidth="500.0" GridPane.rowIndex="1">
+            <children>
+                <VBox>
+                    <children>
+                        <Label text="Buyer Name" textAlignment="RIGHT"/>
+                        <Label fx:id="buyerNameDisplay" text="-"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Bill No." textAlignment="RIGHT"/>
+                        <Label fx:id="billNoDisplay" text="-"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="2">
+                    <children>
+                        <Label text="Date" textAlignment="RIGHT"/>
+                        <Label fx:id="dateDisplay" text="-"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="3">
+                    <children>
+                        <Label text="Remarks" textAlignment="RIGHT"/>
+                        <Label fx:id="remarksDisplay" text="-"/>
+                    </children>
+                </VBox>
+                <VBox GridPane.columnIndex="4">
+                    <children>
+                        <Label text="Mode of Payment" textAlignment="RIGHT"/>
+                        <Label fx:id="modeOfPayDisplay" text="-"/>
+                    </children>
+                </VBox>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
+        <TableView fx:id="billItemsTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="partColumn" prefWidth="75.0" text="Part"/>
+                <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity"/>
+                <TableColumn fx:id="priceColumn" prefWidth="98.0" text="Price / Unit"/>
+            </columns>
+        </TableView>
+        <HBox alignment="TOP_RIGHT">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill"/>
+            </children>
+        </HBox>
+    </children>
 </VBox>

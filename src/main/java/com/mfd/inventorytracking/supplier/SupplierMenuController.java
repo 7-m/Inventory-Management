@@ -18,4 +18,9 @@ public class SupplierMenuController
 	private void onClickRetrieveSupplier(ActionEvent actionEvent) {
 		setView("/layouts/supplier/retrieve_supplier.fxml");
 	}
+
+	@FXML
+	private void onClickRetrieveAllSupplier(ActionEvent actionEvent) {
+		setView("/layouts/supplier/retrieve_all_supplier.fxml");
+	}
 }

@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.mfd.inventorytracking.HomeLayoutController">
+
+<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="/layouts/bootstrap_theme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.HomeLayoutController">
     <items>
         <Accordion>
             <panes>
-                <TitledPane animated="false" text="Supply Bills">
+                <TitledPane text="Supply Bills">
                     <content>
-                        <fx:include source="supply_billing/supply_menu_layout.fxml" fx:id="supplyBillingMenu"/>
+                        <fx:include fx:id="supplyBillingMenu" source="supply_billing/supply_menu_layout.fxml" />
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Suppliers">
+                <TitledPane text="Suppliers">
                     <content>
-                        <fx:include source="supplier/supplier_menu_layout.fxml" fx:id="supplierMenu"/>
+                        <fx:include fx:id="supplierMenu" source="supplier/supplier_menu_layout.fxml" />
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Buyers">
+                <TitledPane text="Buyers">
                     <content>
-                        <VBox>
-                            <children>
-                                <fx:include source="buyer/buyer_menu_layout.fxml" fx:id="buyerMenu"/>
-                            </children>
-                        </VBox>
+
+
+                        <fx:include fx:id="buyerMenu" source="buyer/buyer_menu_layout.fxml" />
+
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Parts">
+                <TitledPane text="Parts">
                     <content>
-                        <fx:include source="part/part_menu_layout.fxml" fx:id="partMenu"/>
+                        <fx:include fx:id="partMenu" source="part/part_menu_layout.fxml" />
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Order Bills">
+                <TitledPane text="Order Bills">
                     <content>
-                        <fx:include source="order_billing/order_menu_layout.fxml" fx:id="orderBillingMenu"/>
+                        <fx:include fx:id="orderBillingMenu" source="order_billing/order_menu_layout.fxml" />
                     </content>
                 </TitledPane>
             </panes>
         </Accordion>
-        <AnchorPane fx:id="displayPane" prefHeight="200.0" prefWidth="200.0"/>
+        <AnchorPane fx:id="displayPane" prefHeight="700.0" prefWidth="800.0" />
     </items>
 </SplitPane>
