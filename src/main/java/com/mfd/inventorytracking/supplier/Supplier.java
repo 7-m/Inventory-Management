@@ -1,13 +1,30 @@
 package com.mfd.inventorytracking.supplier;
 
- class Supplier {
+class Supplier {
 	private String name;
 	private String gstin;
 	private String address;
 	private String contact;
+	private int debt;
 
-	 public Supplier() {
+	public Supplier() {
 
+	}
+
+	public Supplier(String name, String gstin, String address, String contact, int debt) {
+		this.name = name;
+		this.gstin = gstin;
+		this.address = address;
+		this.contact = contact;
+		this.debt = debt;
+	}
+
+	int getDebt() {
+		return debt;
+	}
+
+	void setDebt(int debt) {
+		this.debt = debt;
 	}
 
 	public String getName() {
@@ -39,13 +56,6 @@ package com.mfd.inventorytracking.supplier;
 	}
 
 	public void setContact(String contact) {
-		this.contact = contact;
-	}
-
-	public Supplier(String name, String gstin, String address, String contact) {
-		this.name = name;
-		this.gstin = gstin;
-		this.address = address;
 		this.contact = contact;
 	}
 }

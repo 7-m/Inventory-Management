@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.PartMenuController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="/layouts/menu.css" xmlns="http://javafx.com/javafx/8"
+      fx:controller="com.mfd.inventorytracking.part.PartMenuController">
    <children>
       <Button mnemonicParsing="false" onAction="#onClickAddPart" text="Add New Part" />
       <Button mnemonicParsing="false" onAction="#onClickRetrievePart" text="Retrieve Part" />

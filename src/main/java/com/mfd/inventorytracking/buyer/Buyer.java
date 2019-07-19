@@ -5,16 +5,26 @@ class Buyer {
 	private String  gstin;
 	private String  address;
 	private String  contact;
+	private int credit;
+
+	int getCredit() {
+		return credit;
+	}
+
+	void setCredit(int credit) {
+		this.credit = credit;
+	}
 
 	public Buyer() {
 
 	}
 
-	public Buyer(String name, String gstin, String address, String contact) {
+	public Buyer(String name, String gstin, String address, String contact, int credit) {
 		this.name = name;
 		this.gstin = gstin;
 		this.address = address;
 		this.contact = contact;
+		this.credit=credit;
 	}
 
 	public String getName() {

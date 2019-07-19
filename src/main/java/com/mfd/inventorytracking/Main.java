@@ -31,6 +31,7 @@ public class Main
 		//establish connection
 		connectToDatabse();
 		Context.setConnection(connection);
+
 		URL resource = getClass().getResource("/layouts/home_layout.fxml");
 		FXMLLoader loader = new FXMLLoader(resource);
 		Scene sc = new Scene(loader.load());
@@ -38,18 +39,23 @@ public class Main
 
 		primaryStage.setMinHeight(500.0);
 		primaryStage.setMinWidth(800.0);
-
+		primaryStage.setTitle("Inventory Manager");
 		primaryStage.show();
 	}
 
-	private void connectToDatabse() throws SQLException {
+	private void connectToDatabse() {
 
 		//configure the database to connect to using commad line args
 		Map<String, String> params = getParameters().getNamed();
-		connection = DriverManager
-				.getConnection("jdbc:mysql://" + params.get("address") + "/INVENTORY_MANAGEMENT", params.get("user"),
-						params.get("password"));
-
+		try {
+			connection = DriverManager
+					.getConnection("jdbc:mysql://" + params.get("address") + "/INVENTORY_MANAGEMENT",
+							params.get("user"),
+							params.get("password"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 
 
 	}

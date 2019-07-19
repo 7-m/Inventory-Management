@@ -3,10 +3,9 @@ package com.mfd.inventorytracking.supplybill;
 import com.mfd.inventorytracking.Context;
 import javafx.collections.FXCollections;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Queries {
 	public static void insertBill(SupplyBill supplyBill) {
@@ -97,5 +96,29 @@ public class Queries {
 
 		}
 		return bill;
+	}
+
+	public static List<SupplyBill> retrieveAllBills() {
+		List<SupplyBill> bills = new ArrayList<>();
+
+		Connection con = Context.getConnection();
+
+		try (Statement qr = con.createStatement(); ResultSet rs = qr
+				.executeQuery("SELECT Bill_No, Supplier_Name, Bill_Date FROM SUPPLY_BILL;")) {
+
+			while (rs.next()) {
+				SupplyBill b=new SupplyBill();
+				b.setBillno(rs.getInt(1));
+				b.setSupplierName(rs.getString(2));
+				b.setDate(rs.getDate(3));
+				bills.add(b);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Context.displayErrorWindow(e.getMessage());
+
+		}
+		return bills;
 	}
 }

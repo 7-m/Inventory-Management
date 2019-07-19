@@ -5,11 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Part {
-	private String name;
+	private String name="";
 	private float  taxSlab;
 	private int    quantity;
-	private String desc;
-	private byte[] image;
+	private String desc="";
+	private byte[] image=new byte[0];
 
 	public Part() {
 

@@ -4,11 +4,13 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.mfd.inventorytracking.orderbill.OrderBillingMenuController">
+      fx:controller="com.mfd.inventorytracking.orderbill.OrderBillingMenuController" stylesheets="/layouts/menu.css">
 
     <children>
         <Button mnemonicParsing="false" onAction="#onClickCreateNewBill" text="Create New Bill"/>
         <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill"/>
+        <Button mnemonicParsing="false" onAction="#onClickRetrieveAllBills" text="Retrieve All Bills"/>
+
     </children>
 
 

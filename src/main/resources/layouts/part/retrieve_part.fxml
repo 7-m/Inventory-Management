@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
+<SplitPane dividerPositions="0.5108153078202995" stylesheets="/layouts/container.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.part.RetrievePartController">
     <items>
         <AnchorPane>
             <children>
                 <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
+                        <Button mnemonicParsing="false" onAction="#retrieveAllParts" text="Reteieve All Parts" />
                         <HBox>
                             <children>
                                 <Label text="Part Name" />
                                 <TextField fx:id="partNameField" />
+                                <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
                             </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#onClickSearch" text="Search" />
                         <TableView fx:id="partsTable">
                             <columns>
                                 <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -32,9 +38,9 @@
             </children>
         </AnchorPane>
         <AnchorPane>
-           <children>
-               <ImageView fitHeight="196.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" />
-           </children>
+            <children>
+                <ImageView fx:id="imageView" fitHeight="379.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-26.0" AnchorPane.topAnchor="0.0" />
+            </children>
         </AnchorPane>
     </items>
 </SplitPane>

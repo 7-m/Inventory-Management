@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mfd.inventorytracking.supplybill.NewSupplyBillController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="/layouts/container.css" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx/8" fx:controller="com.mfd.inventorytracking.supplybill.NewSupplyBillController">
    <children>
       <GridPane prefHeight="56.0" prefWidth="500.0" GridPane.rowIndex="1">
         <columnConstraints>

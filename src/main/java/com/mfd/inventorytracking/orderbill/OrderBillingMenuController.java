@@ -19,4 +19,8 @@ public class OrderBillingMenuController
 	}
 
 
+	@FXML
+	private void onClickRetrieveAllBills(ActionEvent actionEvent) {
+		setView("/layouts/order_billing/retrieve_all_order.fxml");
+	}
 }
