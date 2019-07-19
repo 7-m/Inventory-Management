@@ -10,6 +10,8 @@
     <children>
         <Button mnemonicParsing="false" text="Add New Buyer" onAction="#onClickAddBuyer"/>
         <Button mnemonicParsing="false" text="Retrieve Buyer Details" onAction="#onClickRetrieveBuyer"/>
+        <Button mnemonicParsing="false" text="Retrieve All Buyers" onAction="#onClickRetrieveAllBuyer"/>
+
     </children>
 
 </VBox>

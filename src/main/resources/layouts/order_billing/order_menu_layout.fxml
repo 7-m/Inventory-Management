@@ -9,6 +9,8 @@
     <children>
         <Button mnemonicParsing="false" onAction="#onClickCreateNewBill" text="Create New Bill"/>
         <Button mnemonicParsing="false" onAction="#onClickRetrieveBill" text="Retrieve Bill"/>
+        <Button mnemonicParsing="false" onAction="#onClickRetrieveAllBills" text="Retrieve All Bills"/>
+
     </children>
 
 

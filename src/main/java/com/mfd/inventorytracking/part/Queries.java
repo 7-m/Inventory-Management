@@ -4,6 +4,8 @@ import com.mfd.inventorytracking.Context;
 import javafx.stage.Stage;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class Queries {
 
@@ -78,4 +80,38 @@ class Queries {
 	}
 
 
+	public static List<Part> retrieveAllParts() {
+
+		Connection connection = Context.getConnection();
+		List<Part> parts = new ArrayList<>();
+
+		try (PreparedStatement partQuery = connection
+				.prepareStatement("SELECT * FROM PART;")
+		) {
+
+			ResultSet r = partQuery.executeQuery();
+
+
+			while (r.next()) {
+				Part p =new Part();
+				p.setName(r.getString(1));
+				p.setQuantity(r.getInt(2));
+				p.setTaxSlab(r.getFloat(3));
+
+				Blob imgBlob = r.getBlob(4);
+				if (imgBlob != null)
+					p.setImage(imgBlob.getBytes(1, Math.toIntExact(imgBlob.length())));
+
+				p.setDesc(r.getString(5));
+				parts.add(p);
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Context.displayErrorWindow(e.getMessage());
+		}
+		return parts;
+
+	}
 }

@@ -19,4 +19,8 @@ public class SupplyBillingMenuController
 	}
 
 
+	@FXML
+	private void onClickRetrieveAllBills(ActionEvent actionEvent) {
+		setView("/layouts/supply_billing/retrieve_all_supply.fxml");
+	}
 }

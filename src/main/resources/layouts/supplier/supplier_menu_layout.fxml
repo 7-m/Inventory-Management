@@ -11,6 +11,7 @@
     <children>
         <Button mnemonicParsing="false" text="Add New Supplier" onAction="#onClickAddSupplier"/>
         <Button mnemonicParsing="false" text="Retrieve Supplier Details" onAction="#onClickRetrieveSupplier"/>
+        <Button mnemonicParsing="false" text="Retrieve All Suppliers" onAction="#onClickRetrieveAllSupplier"/>
     </children>
 
 </VBox>
